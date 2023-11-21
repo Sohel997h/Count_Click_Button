@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body style="text-align: center;">
+	<h1>
+		Clicked Count
+	</h1>
+	<button id="btn">Click Here!</button>
+	<div id="display" class="clicker">
+	</div>
+	<script>
+		let count = 0;
+		let btn = document.getElementById("btn");
+		let disp = document.getElementById("display");
+
+		btn.onclick = function () {
+			count++;
+			let displayLine = document.createElement("p");
+			displayLine.innerHTML = `Button Clicked ${count}<a href="#" onclick="removecount(${count})">x</a> Times`;
+			displayLine.setAttribute('id', `${count}`);
+			disp.appendChild(displayLine)
+		}
+
+		const button = document.querySelector(".clicker");
+		button.addEventListener("click", removecount);
+
+		function removecount(count) {
+			let buttonToRemove = document.getElementById(count);
+			if (buttonToRemove) {
+				buttonToRemove.remove();
+			}
+		}
+	</script>
+</body>
+
+</html>
